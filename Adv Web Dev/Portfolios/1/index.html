@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *:before, *, *:after {
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: grid;
+      gap: 12px;
+      margin: 0;
+    }
+
+    button {
+      padding: 32px 16px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function sumWhile() {
+      while (true) {
+        const question =
+          "Enter a positive integer that indicates how many integers you want to sum";
+
+        const input = +prompt(question);
+
+        // check if positive
+        const check = Number.isInteger(input) && input > 0;
+		
+        // continue loop if >0
+        if (!check) continue;
+
+        // times to loop
+        let times = input;
+
+        // initialize sum
+        let sum = 0;
+
+        while (times) {
+          // convert input to a number
+          const nextInput = +prompt(`[${times}] please type integer value`);
+
+          // continue the loop unless positive
+          if (!Number.isInteger(nextInput)) continue;
+
+          // add integer to sum
+          sum += nextInput;
+
+          // decrease value of times
+          --times;
+        }
+
+        // print sum
+        alert(`Sum: ${sum}`);
+        // exit loop
+        break;
+      }
+    }
+
+    function maxWhile() {
+      while (true) {
+        const question ="Enter a positive integer that indicates how many integers you want to check for the maximum value";
+        const input = +prompt(question);
+        const check = Number.isInteger(input) && input > 0;
+		
+        if (!check) continue;
+        let times = input;
+        let max = 0;
+
+        while (times) {
+          const nextInput = +prompt(`[${times}] please type integer value`);
+          if (!Number.isInteger(nextInput)) continue;
+		  
+          max = nextInput > max ? nextInput : max;
+          --times;
+        }
+		
+        alert(`Max: ${max}`);
+        break;
+      }
+    }
+
+    function sumMaxWhile() {
+      while (true) {
+        const question = "Enter a positive integer that indicates how many integers you want to sum and check for the maximum value";
+        const input = +prompt(question);
+        const check = Number.isInteger(input) && input > 0;
+		
+        if (!check) continue;
+		
+        let times = input;
+        let max = 0;
+        let sum = 0;
+
+        while (times) {
+          const nextInput = +prompt(`[${times}] please type integer value`);
+		  
+          if (!Number.isInteger(nextInput)) continue;
+
+          max = nextInput > max ? nextInput : max;
+          sum += nextInput;
+
+          --times;
+        }
+		
+        alert(`Max: ${max}, Sum: ${sum}`);
+        break;
+      }
+    }
+
+    function sumFor() {
+      for (;;) {
+        const question ="Enter a positive integer that indicates how many integers you want to sum";
+        const input = +prompt(question);
+		const check = Number.isInteger(input) && input > 0;
+
+        if (!check) continue;
+
+        let sum = 0;
+
+        for (let i = input; i > 0; i--) {
+          const nextInput = +prompt(`[${i}] please type integer value`);
+          if (!Number.isInteger(nextInput)) continue;
+          sum += nextInput;
+        }
+
+        alert(`Sum: ${sum}`);
+        break;
+      }
+    }
+
+    function maxFor() {
+      for (;;) {
+        const question ="Enter a positive integer that indicates how many integers you want to check for the maximum value";
+        const input = +prompt(question);
+        const check = Number.isInteger(input) && input > 0;
+
+        if (!check) continue;
+		
+        let max = 0;
+
+        for (let i = input; i > 0; i--) {
+          const nextInput = +prompt(`[${i}] please type integer value`);
+
+          if (!Number.isInteger(nextInput)) continue;
+
+          max = nextInput > max ? nextInput : max;
+        }
+		
+        alert(`Max: ${max}`);
+        break;
+      }
+    }
+
+    function sumMaxFor() {
+      for (;;) {
+        const question ="Enter a positive integer that indicates how many integers you want to sum and check for the maximum value";
+        const input = +prompt(question);
+        const check = Number.isInteger(input) && input > 0;
+
+        if (!check) continue;
+
+        let max = 0;
+        let sum = 0;
+
+        for (let i = input; i > 0; i--) {
+          const nextInput = +prompt(`[${i}] please type integer value`);
+		  
+          if (!Number.isInteger(nextInput)) continue;
+		  
+          max = nextInput > max ? nextInput : max;
+		  
+          sum += nextInput;
+        }
+
+        alert(`Max: ${max}, Sum: ${sum}`);
+        break;
+      }
+    }
+
+    // store fuctions in array and display
+    const programs = [sumWhile, maxWhile, sumMaxWhile, sumFor, maxFor, sumMaxFor];
+
+    programs.forEach((program) => {
+      const button = document.createElement("button");
+      button.innerText = program.name;
+      button.onclick = () => program();
+      document.body.appendChild(button);
+    });
+
+  </script>
+</body>
+</html>

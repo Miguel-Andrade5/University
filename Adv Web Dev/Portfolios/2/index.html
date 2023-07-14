@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="post">
+      <input type="text" id="text1" />
+      <input type="text" id="text2" />
+      <input type="text" id="text3" />
+      <input type="text" id="text4" />
+      <input type="text" id="text5" />
+      <input type="text" id="text6" />
+      <input
+        type="text"
+        id="textResult"
+        placeholder="click here to see all the text"
+      />
+    </form>
+    <script>
+      // Concatonate
+      let result = document.getElementById("textResult");
+      let regEx = /text[1-7]/g;
+
+      result.onfocus = () => {
+        let textFields = document.querySelectorAll("input[type='text']");
+        let neededInputs = "";
+        for (let i = 0; i < textFields.length; i++) {
+          const el = textFields[i];
+          if (String(el.id).match(regEx)) {
+            neededInputs = neededInputs + el.value;
+          }
+        }
+        result.value = neededInputs;
+      };
+
+      // Add text field button
+      let button = document.createElement("button");
+      button.id = "button";
+      button.textContent = "Add Text Field";
+
+      let ourForm = document.querySelector("form");
+      ourForm.after(button);
+
+      let textSeven = document.createElement("input");
+      textSeven.type = "text";
+      textSeven.id = "text7";
+
+      button.onclick = () => {
+        result.before(textSeven);
+      };
+    </script>
+  </body>
+</html>
